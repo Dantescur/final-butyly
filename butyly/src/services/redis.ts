@@ -25,18 +25,13 @@
 
 import { createClient } from "redis";
 
-// Fetch Redis credentials from environment variables
-const redisHost = process.env.REDIS_HOST || "127.0.0.1"; // Default to localhost if not set
-const redisPort = parseInt(process.env.REDIS_PORT || "6379"); // Default to port 6379
-const redisPassword = process.env.REDIS_PASSWORD || ""; // Default to no password
-
+// Parse the Redis connection URL provided by Render
+const redisUrl = process.env.REDIS_URL || "redis://127.0.0.1:6379"; // Default to localhost if not set
 const redisClient = createClient({
+  url: redisUrl, // Use the full Redis URL
   socket: {
-    host: redisHost, // Use the host from Render environment variable
-    port: redisPort, // Use the port from Render environment variable
     reconnectStrategy: (attempts) => Math.min(attempts * 100, 3000),
   },
-  password: redisPassword, // Use the password from Render environment variable
 });
 
 redisClient.on("error", (err) => {
