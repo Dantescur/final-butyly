@@ -1,36 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Vite + TS</title>
+    <title>Butyly URL Shortener</title>
   </head>
   <body>
-    <div class="container">
-      <h1>URL Shortener</h1>
-      <form id="url-form">
-        <div class="input-group">
-          <label for="originalUrl">Enter URL</label>
-          <input type="url" id="originalUrl" name="originalUrl" required />
-        </div>
-        <div class="input-group">
-          <label for="expiration">Expiration (e.g., 1h, 1d, 30m)</label>
-          <input type="text" id="expiration" name="expiration" />
-        </div>
-        <button type="submit">Shorten URL</button>
-      </form>
-
-      <div id="result" class="result">
-        <p>
-          <strong>Short URL:</strong>
-          <a id="shortUrlLink" href="" target="_blank"
-            ><span id="shortUrl"></span
-          ></a>
-        </p>
-        <p><strong>Expires in:</strong> <span id="expiresIn"></span></p>
-      </div>
-    </div>
+    <div id="app"></div>
     <script type="module" src="/src/main.ts"></script>
   </body>
 </html>
