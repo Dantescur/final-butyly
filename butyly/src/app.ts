@@ -38,7 +38,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-	res.status(200).sendFile(path.join(__dirname, "public", "index.html"));
+	res.status(200).sendFile(path.join(__dirname, "dist/public/index.html"));
 });
 
 app.use("/", router);
