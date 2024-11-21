@@ -1,8 +1,8 @@
 import path from "node:path";
 import express, {
-  type NextFunction,
-  type Request,
-  type Response,
+	type NextFunction,
+	type Request,
+	type Response,
 } from "express";
 import dotenv from "dotenv";
 import router from "./router";
@@ -34,30 +34,30 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", (_req, res) => {
-  res.status(200).send("Hello");
+	res.status(200).sendFile(path.join(__dirname, "public", "index.html"));
 });
 
 app.use("/", router);
 
 app.get("/health", (_req: Request, res: Response) => {
-  res.status(200).json({ status: "OK" });
+	res.status(200).json({ status: "OK" });
 });
 
 app.use((err: Error, req: Request, res: Response, _next: NextFunction) => {
-  logger.error(`${req.method} ${req.url} - ${err.message}\n${err.stack}`);
-  res.status(500).json({ error: "Internal Server Error" });
+	logger.error(`${req.method} ${req.url} - ${err.message}\n${err.stack}`);
+	res.status(500).json({ error: "Internal Server Error" });
 });
 
 app.listen(port, () => {
-  console.log(`🚀 Server running at port ${port}`);
+	console.log(`🚀 Server running at port ${port}`);
 });
 
 process.on("SIGINT", () => {
-  console.log("Shutting down gracefully...");
-  process.exit(0);
+	console.log("Shutting down gracefully...");
+	process.exit(0);
 });
 
 process.on("SIGTERM", () => {
-  console.log("Shutting down gracefully...");
-  process.exit(0);
+	console.log("Shutting down gracefully...");
+	process.exit(0);
 });

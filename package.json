@@ -7,7 +7,10 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "ui:butyly": "pnpm --filter ui-butyly",
     "start": "node ./butyly/dist/app.js",
-    "butyly": "pnpm --filter butyly"
+    "butyly": "pnpm --filter butyly",
+    "dev:ui": "pnpm --filter ui-butyly dev",
+    "dev:server": "pnpm --filter butyly dev",
+    "dev": "concurrently -k \"pnpm dev:ui\" \"pnpm dev:server\""
   },
   "workspaces": [
     "butyly",
@@ -16,5 +19,8 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee"
+  "packageManager": "pnpm@9.12.3+sha512.cce0f9de9c5a7c95bef944169cc5dfe8741abfb145078c0d508b868056848a87c81e626246cb60967cbd7fd29a6c062ef73ff840d96b3c86c40ac92cf4a813ee",
+  "devDependencies": {
+    "concurrently": "^9.1.0"
+  }
 }

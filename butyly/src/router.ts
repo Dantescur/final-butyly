@@ -6,7 +6,7 @@ import { formatTime, parseExpiration } from "@utils/timeHandler";
 
 const router = Router();
 
-const baseURL = "http://localhost:3000";
+const baseURL = process.env.BASE_URL || "http://localhost:3000";
 
 router.post("/shorten", async (req, res) => {
 	const { originalUrl, expiration } = req.body;

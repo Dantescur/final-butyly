@@ -21,7 +21,7 @@ form.addEventListener("submit", async (event) => {
 	const expiration = expirationInput.value;
 
 	try {
-		const response = await fetch("http://localhost:3000/shorten", {
+		const response = await fetch("/shorten", {
 			method: "POST",
 			headers: {
 				"Content-Type": "application/json",
