@@ -18,6 +18,10 @@ dotenv.config();
 
 const port = Number(process.env.PORT) || 3000;
 
+app.set("trust proxy", 1);
+
+app.disable("x-powered-by");
+
 app.use(helmet());
 
 app.use(express.static(path.join(__dirname, "public")));
