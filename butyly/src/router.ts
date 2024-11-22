@@ -70,7 +70,6 @@ router.get("/links", async (_req, res) => {
   }
 });
 
-// Place this after more specific routes
 router.get("/:id", async (req, res) => {
   const { id } = req.params;
 
@@ -78,7 +77,6 @@ router.get("/:id", async (req, res) => {
     const originalUrl = await redisClient.get(id);
 
     if (!originalUrl) {
-      console.error(`Key ${id} not found in Redis`);
       res.status(404).json({ error: "URL not found" });
       return;
     }
@@ -90,7 +88,6 @@ router.get("/:id", async (req, res) => {
       ip: req.ip || req.socket.remoteAddress || "unknown",
     };
 
-    console.log("Logging click data:", clickData);
     await redisClient.rPush(analyticsKey, JSON.stringify(clickData));
 
     res.redirect(originalUrl);
